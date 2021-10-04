@@ -23,7 +23,7 @@ OPTIONAL: Alternatively, there is a Dockerfile present and the image could be bu
 ### Step 3
 Run the monese-spring image using this command.
 
-`docker container run --network=monese -d --name monese-spring -p 9090:9090 --link mysqldb:mysql monese-spring`
+`docker container run --network=monese -d --name monese-spring -p 9090:9090 --link mysqldb:mysql brianheaphy/monese-spring`
 
 ### Step 4
 Open Postman and import the .json file present in the "postman" folder in the project.
