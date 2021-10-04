@@ -1,0 +1,136 @@
+{
+	"info": {
+		"_postman_id": "83bcfd3e-0a40-4230-b72d-8838165a86b5",
+		"name": "Monese",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Balance",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/account/getBalance?accountId=0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"account",
+						"getBalance"
+					],
+					"query": [
+						{
+							"key": "accountId",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Transactions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/transaction/getAll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"transaction",
+						"getAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Money",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"senderId\": 0,\r\n    \"recipientId\":1,\r\n    \"amount\": 500\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/transaction/sendMoney",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"transaction",
+						"sendMoney"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Account Status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/account/getStatus?accountId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"account",
+						"getStatus"
+					],
+					"query": [
+						{
+							"key": "accountId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Balance By Owner Name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/account/getBalanceByOwnerName?accountOwner=Brian Heaphy",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"account",
+						"getBalanceByOwnerName"
+					],
+					"query": [
+						{
+							"key": "accountOwner",
+							"value": "Brian Heaphy"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -4,10 +4,15 @@ import com.google.gson.Gson;
 import com.monese.demo.domain.dto.Account;
 import com.monese.demo.domain.json.TransactionJson;
 import com.monese.demo.repo.AccountRepository;
+import org.hibernate.engine.spi.PersistenceContext;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -38,9 +43,9 @@ public class EndToEndTest {
     void endToEndIntegrationTest() throws Exception {
         Account sender = accountRepo.getById(SENDER_ID);
         // Set the sender balance to the transaction amount,
-        // so it can complete the transaction (getting it positive would suffice)
+        // so it can complete the transaction (getting it positive is sufficient)
         if(sender.getBalance() < TRANS_AMOUNT) {
-            sender.setBalance(TRANS_AMOUNT - sender.getBalance());
+            sender.setBalance(TRANS_AMOUNT);
         }
         long senderStartingBalance = sender.getBalance();
         Account recipient = accountRepo.getById(RECIPIENT_ID);
