@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="0" author="Brian Heaphy">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="accounts"/>
+            </not>
+        </preConditions>
+        <createTable tableName="accounts">
+            <column name="id" type="varchar(20)">
+                <constraints primaryKey="true" primaryKeyName="pk_accounts" />
+            </column>
+            <column name="owner" type="varchar(124)" />
+            <column name="balance" type="bigint" />
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1" author="Brian Heaphy">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="transactions"/>
+            </not>
+        </preConditions>
+        <createTable tableName="transactions">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" primaryKeyName="pk_transactions" />
+            </column>
+            <column name="sender_id" type="varchar(20)">
+                <constraints nullable="false" notNullConstraintName="sender_nn" />
+            </column>
+            <column name="recipient_id" type="varchar(20)">
+                <constraints nullable="false" notNullConstraintName="recipient_nn" />
+            </column>
+            <column name="amount" type="bigint">
+                <constraints nullable="false" notNullConstraintName="amount_nn" />
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="transactions" baseColumnNames="sender_id" constraintName="sender_id_fk" referencedTableName="accounts" referencedColumnNames="id" />
+        <addForeignKeyConstraint baseTableName="transactions" baseColumnNames="recipient_id" constraintName="recipient_id_fk" referencedTableName="accounts" referencedColumnNames="id" />
+        <addAutoIncrement catalogName="db" columnDataType="int" columnName="id" defaultOnNull="false" generationType="ALWAYS" incrementBy="1" schemaName="public" startWith="10" tableName="transactions"/>
+    </changeSet>
+
+    <changeSet id="2" author="Brian Heaphy">
+        <sqlFile path="scripts/insertcommands.sql"/>
+    </changeSet>
+</databaseChangeLog>
