@@ -40,11 +40,14 @@ Base: http://localhost:9090
 
 Account:
 /account/getById (params= accountId)
+
 /account/getByOwnerName (params= ownerName)
+
 /account/getStatus (params= accountId)
 
 Transaction:
 /transaction/getAll
+
 /transaction/sendMoney (body= transactionJson)
 
 transactionJson example:
