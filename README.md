@@ -28,3 +28,28 @@ Run the monese-spring image using this command.
 ### Step 4
 Open Postman and import the .json file present in the "postman" folder in the project.
 Now you have a sample of commands to run to test the application.
+
+
+## API
+
+Normally I would like to document Spring APIs using SwaggerUI/OpenAPI but in the interest of time I will use a more
+simplistic approach and list details below.
+
+Endpoints:
+Base: http://localhost:9090
+
+Account:
+/account/getById (params= accountId)
+/account/getByOwnerName (params= ownerName)
+/account/getStatus (params= accountId)
+
+Transaction:
+/transaction/getAll
+/transaction/sendMoney (body= transactionJson)
+
+transactionJson example:
+{
+  "senderId":"0",
+  "recipientId":"1",
+  "amount":500
+}
