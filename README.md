@@ -8,7 +8,7 @@ Home assessment for Monese
 - Install Postman (Not necessary but a collection of HTTP commands has been provided in the git repo)
 
 ### Step 1
-Install the mysql docker image and run the container using the following command.
+Start Docker and install the mysql docker image and run the container using the following command.
 
 `docker run --network=monese --name mysqldb -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=db -e MYSQL_USER=user 
 -e MYSQL_PASSWORD=pass -d mysql:8`
